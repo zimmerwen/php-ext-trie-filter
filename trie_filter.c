@@ -562,7 +562,11 @@ PHP_FUNCTION(trie_filter_write)
         RETURN_FALSE;
     }
 
+#if PHP_MAJOR_VERSION < 7
+    RETVAL_STRINGL(p, plen, 0);
+#else
     RETVAL_STRINGL(p, plen);
+#endif
     free(p);
 }
 /* }}} */
